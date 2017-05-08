@@ -19,59 +19,81 @@ d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
 
 
 
-// var countries = d3.map();
+// Creating a smooth color legend with an SVG gradient, modified code from https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient.html
+
+// //Append a defs (for definition) element to your SVG
+// var defs = svg.append("defs");
 //
-// var x = d3.scaleLinear()
-//     .domain([1, 10])
-//     .rangeRound([600, 860]);
+// //Append a linearGradient element to the defs and give it a unique id
+// var linearGradient = defs.append("linearGradient")
+//     .attr("id", "linear-gradient");
 //
-// var color = d3.scaleThreshold()
-//     .domain(d3.range(12, 109627))
-//     .range(d3.schemeBlues[9]);
+// //Set the color for the start (0%)
+// linearGradient.append("stop")
+//     .attr("offset", "0%")
+//     .attr("stop-color", "#90eb9d"); //light blue
 //
-// var g = svg.append("g")
-//     .attr("class", "key")
-//     .attr("transform", "translate(0,20)");
+// //Set the color for the end (100%)
+// linearGradient.append("stop")
+//     .attr("offset", "100%")
+//     .attr("stop-color", "#2c7bb6"); //dark blue
 //
-//     g.append("text")
-//     .attr("class", "caption")
-//     .attr("x", x.range()[0])
-//     .attr("y", -6)
-//     .attr("fill", "#000")
-//     .attr("text-anchor", "start")
-//     .attr("font-weight", "bold")
-//     .text("Count of counties");
+// var scale = ["#90eb9d", "#90eb9d", "#00a6ca", "#00a6ca"]
 //
-//     g.call(d3.axisBottom(x)
-//     .tickSize(10)
-//     //.tickFormat(function(x, i) { return i ? x : x + "%"; })
-//     .tickValues(color.domain()))
-//   .select(".domain")
-//     .remove();
+// //Draw the rectangle and fill with gradient
+// svg.append("rect")
+//   	.attr("width", 300)
+//   	.attr("height", 20)
+//   	.style("fill", "url(#linear-gradient)")
+//     .attr("x", 600)
+//     .attr("y", 0)
 //
+// /////////////////////////////////// TO DO (append legend text)
 //
-//
-//
-//     d3.queue()
-//        //.defer(d3.json, "https://d3js.org/us-10m.v1.json")
-//         .defer(d3.csv, "general.csv", function(d) { countries.set(+d.latitude, +d.longitude); })
-//         .await(ready);
-//
-//     function ready(error, us) {
-//       if (error) throw error;
-//
-//       svg.append("g")
-//           //.attr("class", "states")
-//       //  .selectAll("path")
-//         .data(csv.feature(d, d.Count).features)
-//         .enter().append("path")
-//           .attr("fill", function(d) { return color(d.states = countries.get(d.Count)); })
-//           .attr("d", path)
-//         .append("title")
-//           .text(function(d) { return d.rate + "%"; });
-//
-//       svg.append("path")
-//           //.datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-//           .attr("class", "states")
-//           .attr("d", path);
-// }
+// var legedScale = svg.inearGradient()
+//     .domain([12,100])
+//     .range([200,0])
+
+  // svg.append("text")
+  //   .attr("x", 0)
+  //   .attr("y", 0)
+  //   .text(function(d,i) { return legend_label[i]; });
+
+
+
+// modified code from https://gist.github.com/michellechandra/0b2ce4923dc9b5809922
+
+// Load in my general info data!
+////color.domain([0,1,2,3]); // setting the range of the input data
+
+
+// // Load GeoJSON data and merge with general info data
+// d3.json("us-states.json", function(json) {
+
+
+
+
+
+var colorScale = d3.scaleSequential(quantile.domain(["#90eb9d", "#90eb9d", "#00a6ca", "#00a6ca"]));
+
+var drawLegend = function() {
+	// our color scale doesn't have an invert() function
+	// and we need some way of mapping 0% and 100% to our domain
+	// so we'll create a scale to reverse that mapping
+	var percentScale = d3.scaleLinear()
+		.domain([0, 100])
+		.range(colorScale.domain());
+
+    svg.append("defs")
+  		.append("linearGradient")
+  		.attr("id", "gradient")
+  		.selectAll("stop")
+  		.data(d3.ticks(0, 100, 5))
+  		.enter()
+  		.append("stop")
+  		.attr("offset", function(d) {
+  			return d + "%";
+  		})
+  		.attr("stop-color", function(d) {
+  			return colorScale(percentScale(d));
+  		});
