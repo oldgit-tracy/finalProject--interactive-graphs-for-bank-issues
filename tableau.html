@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Tableau</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Tableau Prototype</h1>
+							<h2>Dashboard</h2>
+								<span class="image main"><img src="Dashboard.png" alt="" /></span>
+							<h2>Description</h2>
+								<p>
+									The dataset is really big, so I have to narrow it down to top five issues, in a descending order
+									based on counts, and bar chart will show the total count of each issue. I will make interaction
+									between these map and bar chart in D3. The map is based on longitude and latitude.
+									The data points in map are really compact, so it is hard to tell a pattern or something useful,
+									expcept the majority points scatter in western and eastern counties.
+								</p>
+
+								<p>I am interested in knowing the pattern or story of the top one issue in the banks I like,
+									 so I simply make a line chart to get it start. The color shows details about company, and <thead>
+									 	year is filter ranges from January 2012 to December 2016 to keep the completeness and accuracy of data, and avoid lie factor.
+								</p>
+							<button onclick="goBack()">Go Back</button>
+						</div>
+					</div>
+			</div>
+
+	</body>
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+		<script>
+				function goBack() {
+						window.history.back();
+				}
+		</script>
+</html>

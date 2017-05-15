@@ -18,63 +18,69 @@
 	<body>
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
-		<!-- Wrapper -->
-			<div id="wrapper">
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<h1>D3 Visualization</h1>
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+				<h1>D3 Visualization</h1>
 
-              <sectin id="USmap">
-                <h2>CAmap</h2>
-                <svg width="1200" height="1200"></svg>
-                <script src="USmap.js"></script>
-              </section>
-
-            <!-- <section id="barchart">
-
-                <h2>barchart</h2>
-                <p>interactive with map</p>
-
-                <script type="text/javascript" src="barchart.js" defer></script>
-            </section> -->
-
-            <!-- <section id="lines">
-
-                <h2>Lines</h2>
-                <p>Year starts from 1/1/2012 to 12/31/2016</p>
-
-                <script src="lines.js"></script> -->
-
-          </section>
-
-
-
-
+				<section id="lines">
+				 <h2>Lines</h2>
+					<svg id="lines_svg"></svg>
+					<script src="lines.js"></script>
 					<p>Year starts from 1/1/2012 to 12/31/2016</p>
-            </div>
-					</div>
-<h2>description</h2>
-<h2>analysis</h2>
 
-<button onclick="goBack()">Go Back</button>
-			</div>
+				</section>
+
+
+        	<section id="USmap&Bar">
+						<h2>USmap and bar interaction</h2>
+						<svg id="bar_svg"></svg>
+						<svg id="map_svg"></svg>
+						<script src="USmap&Bar.js"></script>
+					</section>
+
+					<br><br>
+
+
+
+				<div>
+					<h2>description</h2>
+					<p>I use API to draw my U.S. base map, and use data nest function to color and draw my data points in map.
+						Instead of using legend of issues to filter data points in map, I think it is more fun to interact with bar chart,
+						by using bar chart as the legend of issues. There are two reasons. Firstly, I can see the total count of each
+						issue by simply hover on your mouse to the each bar. Secondly, by clicking the bars, the data points will
+						disappear in respective colors. After you choosing your preferable issues (or all of it) you like, you can
+						click the grey area, which is the base map, to zoom in to observe the information in specific county or counties
+						your you would like to know. When you hover on each point, it will tell you more infomation about this particular
+						data point, i.e., it will shows issue title, zip code, count of issue that happen at this zip code, state, ect.
+					</p>
+				</div>
+
+				<div>
+					<h2>analysis</h2>
+				</div>
+
+
+				<p>Year starts from 1/1/2012 to 12/31/2016</p>
+				<button onclick="goBack()">Go Back</button>
+            </div>
+		</div>
+	</div>
 
 
 		<!-- Scripts -->
-
-
-
 	</body>
-  <script src="jquery.min.js"></script>
-  <script src="skel.min.js"></script>
-  <script src="util.js"></script>
-  <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-  <script src="main.js"></script>
-  <script>
+    <script src="jquery.min.js"></script>
+    <script src="skel.min.js"></script>
+    <script src="util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="main.js"></script>
+    <script>
       function goBack() {
           window.history.back();
       }
-  </script>
+    </script>
 </html>
