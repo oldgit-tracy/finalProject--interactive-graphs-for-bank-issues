@@ -30,41 +30,62 @@
 				 <h2>Lines</h2>
 					<svg id="lines_svg"></svg>
 					<script src="lines.js"></script>
-					<p>Year starts from 1/1/2012 to 12/31/2016</p>
-
 				</section>
 
-
-        	<section id="USmap&Bar">
+        	<section id="USmapBar">
 						<h2>USmap and bar interaction</h2>
 						<svg id="bar_svg"></svg>
 						<svg id="map_svg"></svg>
-						<script src="USmap&Bar.js"></script>
+						<script src="USmapBar.js"></script>
 					</section>
 
 					<br><br>
 
-
-
 				<div>
 					<h2>description</h2>
-					<p>I use API to draw my U.S. base map, and use data nest function to color and draw my data points in map.
+					<p>I use <a href="https://gist.githubusercontent.com/mbostock/4090846/raw/us.json">API</a> to draw my U.S. base map, and use data nest function to color and draw my data points in map.
 						Instead of using legend of issues to filter data points in map, I think it is more fun to interact with bar chart,
 						by using bar chart as the legend of issues. There are two reasons. Firstly, I can see the total count of each
 						issue by simply hover on your mouse to the each bar. Secondly, by clicking the bars, the data points will
 						disappear in respective colors. After you choosing your preferable issues (or all of it) you like, you can
 						click the grey area, which is the base map, to zoom in to observe the information in specific county or counties
-						your you would like to know. When you hover on each point, it will tell you more infomation about this particular
+						your you would like to know and click white area to zoom out. You can also move the map around. When you hover on each point, it will tell you more infomation about this particular
 						data point, i.e., it will shows issue title, zip code, count of issue that happen at this zip code, state, ect.
+					</p>
+					<p>
+						In order to avoid lie factor, my data starts from the beginning of 2012 to the end of 2016. When you hover on the lines, you can see the count of issue at the respective year for all four lines. For avoiding the numbers overlapping, I move the red number to the left at the year of 2014.
 					</p>
 				</div>
 
 				<div>
 					<h2>analysis</h2>
+						<p>
+							One thing interesting about the overall distribution is that, from the population angle, California obviously
+							can be top density county according to the <a herf="https://en.wikipedia.org/wiki/County_statistics_of_the_United_States#Nationwide_population_extremes">statistical data</a>.
+							However, the most numbers of issues scatter around eastern U.S. According to the article
+							<a href="http://www.investopedia.com/articles/investing/052715/west-coast-vs-east-coast-economy.asp">West Coast Vs. East Coast Economy</a>,
+							the east coast is the majority for fianancial market, the fast growing, agressive competition in banking and capital market causing the developing
+							for the banks. As the market grows too fast and large, it brings more issues and challences, which explains the issue distribution.
+							I am more interested to see the issues in California, since I live here. The data distribution in California shows that the
+							majority issues are collected in bay area and Los Angles, which means sense, because of the population density and economic/financial situation.
+							If I have more time, I would like to dig more details to compare each issue, and filter companies to see more stories.
+						</p>
+
+						<p>
+							From the line chart, we can see that all the four lines have their issue peaks in the year of 2013.
+							This is a special year due to the cyprus bailout that happened in Europe, which significantly affect the U.S. financial market
+							including banks indirectly. If you want to know more information,
+							<a href="https://www.theguardian.com/world/2013/mar/25/cyprus-bailout-deal-eu-closes-bank">click here</a> to see the interesting details.
+							As you can see, Bank of america and Well fargo have intersection at a point, which is another
+							<a href="https://www.nytimes.com/2015/05/10/business/bank-of-americas-relief-for-mortgage-borrowers-is-questioned.html?_r=0">interesting fact</a>
+							 In the late middle (around August) of year 2015, bank of the America had the loan modification crisis that required BOA to pay
+							 $16.7 billion settlement with the Justice Department and provide $7 billion of consumer relief within four years.
+							 Citibank and JPmorgan Chase have relative smoother line trends. I suppose there are two reasons to explain.
+							 These two banks either have better services than the other two banks, or have less consumers use or complain about them.
+
+						</p>
 				</div>
 
-
-				<p>Year starts from 1/1/2012 to 12/31/2016</p>
 				<button onclick="goBack()">Go Back</button>
             </div>
 		</div>
