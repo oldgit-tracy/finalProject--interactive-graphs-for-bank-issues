@@ -97,7 +97,7 @@ d3.csv("lines.csv", function(error, data1) {
                 // Add the X Axis
             svg1.append("g")
                 .attr("transform", "translate(0," + height1 + ")")
-                .call(d3.axisBottom(xaxis).ticks(7).tickFormat(d3.format(".0f")));
+                .call(d3.axisBottom(xaxis).ticks(5).tickFormat(d3.format(".0f")));
 
                 // text label for the x axis
             svg1.append("text")
